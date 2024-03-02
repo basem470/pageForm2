@@ -34,7 +34,7 @@ const extraAttributes = {
   required: false,
 };
 
-const propertiesSchema = z.object({
+export const propertiesSchema = z.object({
   label: z.string().min(2).max(20),
   helperText: z.string().max(200),
   required: z.boolean().default(false),
@@ -75,10 +75,10 @@ export const TextFieldFormElement: FormElementType = {
   },
 };
 
-type CustomInstance = FormElementInstance & {
+export type CustomInstance = FormElementInstance & {
   extraAttributes: typeof extraAttributes;
 };
-type propertiesFormSchemaType = z.infer<typeof propertiesSchema>;
+export type propertiesFormSchemaType = z.infer<typeof propertiesSchema>;
 function DesignerComponent({
   elementInstance,
 }: {
