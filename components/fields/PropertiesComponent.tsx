@@ -5,10 +5,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect } from "react";
 import {
   CustomInstance,
-  useDesignerContext,
   propertiesFormSchemaType,
   propertiesSchema,
 } from "./TextField";
+
+import useDesigner from "../hooks/useDesigner";
 
 export function PropertiesComponent({
   elementInstance,
@@ -16,7 +17,7 @@ export function PropertiesComponent({
   elementInstance: FormElementInstance;
 }) {
   const element = elementInstance as CustomInstance;
-  const { updateElement } = useDesignerContext();
+  const { updateElement } = useDesigner();
   const form = useForm<propertiesFormSchemaType>({
     resolver: zodResolver(propertiesSchema),
     mode: "onBlur",
